@@ -1,5 +1,5 @@
 <footer class="inf ">
-    <img src="{{asset('image/logo_vietnews.png ')}}" alt="" style="width: 300px; " id="logo2">
+    <img src="{{  \Storage::url('image/logo_vietnews.png ') }}" alt="" style="width: 300px; " id="logo2">
     <ul>
 
         <li><a class="text-decoration-none text-black" href="#">Thời Sự </a></li>
@@ -7,7 +7,7 @@
         <li><a class="text-decoration-none text-black" href="#">Thế Giới</a></li>
         <li><a class="text-decoration-none text-black" href="#">Kinh Doanh</a></li>
         <li><a class="text-decoration-none text-black" href="#">Bất Động Sản</a></li>
-        
+
     </ul>
     <ul>
         <li><a class="text-decoration-none text-black" href="#">Bất động sản</a></li>
@@ -24,7 +24,7 @@
         <li><a class="text-decoration-none text-black" href="#">Xe</a></li>
 
     </ul>
-    
+
     <ul>
         <li><a class="text-decoration-none text-black" href="#">Đời Sống</a></li>
         <li><a class="text-decoration-none text-black" href="#">Phong Thủy</a></li>
@@ -39,6 +39,6 @@
       <li><a class="text-decoration-none text-black" href="#">Tin Rác</a></li>
 
   </ul>
-    
+
 
 </footer>

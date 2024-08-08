@@ -11,7 +11,7 @@ class Storetin_tucRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class Storetin_tucRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tieu_de' => 'required',
+            'tom_tat' => 'required',
+            'noi_dung' => 'required',
+            'hinh_anh' => 'nullable|image|max:2048',
+            'id_loai' => 'required',
+            'tac_gia' => 'required'
         ];
     }
 }

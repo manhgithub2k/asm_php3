@@ -12,7 +12,8 @@
         <header>
             @include('client.layout.partials.headertop')
             @include('client.layout.partials.headernav')
-            
+{{--            @include('client.layout.partials.headernav',['categories'=> $categories])--}}
+
         </header>
         {{-- @foreach ($listloais as $loai)
     <p>{{ $loai->ten_loai }}</p>
@@ -21,11 +22,11 @@
             @yield('content')
         </main>
 
-        
+
         <footer>
           @include('client.layout.partials.footertop')
           @include('client.layout.partials.footerend')
-        </footer>               
+        </footer>
     </div>
 
     @include('client.layout.partials.js')

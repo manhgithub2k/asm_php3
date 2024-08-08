@@ -5,7 +5,7 @@ use App\Http\Controllers\LoaiTinController;
 use App\Http\Controllers\TinTucController;
 use App\Models\tin_tuc;
 use App\Models\loai_tin;
-
+use App\Http\Controllers\AuthenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,30 +17,38 @@ use App\Models\loai_tin;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {   
-        // $tinHot = tin_tuc::orderBy('luot_xem', 'desc')->latest('ngay_dang')->first();        
-        $tinHot = tin_tuc::orderBy('luot_xem', 'desc')->latest('ngay_dang')->get();    
-        // return $tinHot;    
-        return view('client.index',['tinHot'=> $tinHot]);
-
-})->name('trang-chu');
-
-Route::get('/loai/{id}', function ($id) {
-    $loai = tin_tuc::where('id_loai',$id)->get();
-    $tenLoai =  loai_tin::where('id',$id)->get();
-    // return $tenLoai[0];
-    return view('client.tinloai',['loai'=> $loai,'tenLoai'=>$tenLoai]);
-})->name('loai');
-
-
-
-
-
-Route::get('/tin/{id}', function ( $id) {
-    $tinTucController = new TinTucController();
-    $tin = $tinTucController->find($id);
-    return view('client.tin',['tin'=>$tin]);
-    
-})->name('tin');
-
+Route::get('/', [TinTucController::class,'index'])->name('trang-chu');
+Route::get('/loai/{id}',[TinTucController::class,'listLoai'])->name('loai');
+Route::get('/tin/{id}', [TinTucController::class,'show'])->name('tin');
 Route::get('/timkiem',[TinTucController::class,'timKiem'])->name('timkiem');
+
+Route::get('login',[AuthenController::class,'loginForm'])->name('login');
+Route::post('login',[AuthenController::class,'login']);
+
+Route::get('register',[AuthenController::class,'registerForm'])->name('register');
+Route::post('register',[AuthenController::class,'register']);
+
+Route::get('logout',[AuthenController::class,'logout'])->name('logout');
+Route::get('laypass',[AuthenController::class,'forgotForm'])->name('lay-pass');
+Route::post('laypass',[AuthenController::class,'seenEmailResetPass']);
+
+Route::prefix('admin')->group(function (){
+  Route::get('dashboard',function (){
+      return view('admin.dashboard');
+  })->name('admin.dashboard');
+
+    Route::get('news',[TinTucController::class,'list'])->name('news.list');
+    Route::get('news/add',[TinTucController::class,'create'])->name('news.add');
+    Route::post('news/add',[TinTucController::class,'store']);
+    Route::get('news/edit/{id}',[TinTucController::class,'edit'])->name('news.edit');
+    Route::post('news/edit/{id}',[TinTucController::class,'update']);
+    Route::delete('news/{id}',[TinTucController::class,'destroy'])->name('news.delete');
+
+    Route::get('categorynews',[LoaiTinController::class,'index'])->name('categorynews.list');
+    Route::get('categorynews/add',[LoaiTinController::class,'create'])->name('categorynews.add');
+    Route::post('categorynews/add',[LoaiTinController::class,'store']);
+    Route::get('categorynews/edit/{id}',[LoaiTinController::class,'edit'])->name('categorynews.edit');
+    Route::post('categorynews/edit/{id}',[LoaiTinController::class,'update']);
+    Route::delete('categorynews/{id}',[LoaiTinController::class,'delete'])->name('categorynews.delete');
+
+})->middleware(['auth',\App\Http\Middleware\IsAdmin::class]);

@@ -1,16 +1,23 @@
 <div class="headerbottom p-2 ps-5 pe-5  ">
     <nav class="navbar navbar-expand-lg border-top border-bottom">
         <div class="container-fluid">
-          
+
           <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" class="text-decoration-none text-black" href="{{route('trang-chu')}}"><i class="bi bi-house-fill  fs-3"></i></a>
               </li>
+
+{{--                @foreach($categories as $categorie)--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="{{route('loai',['id'=>$categorie->id])}}">{{$categorie->ten_loai}}</a>--}}
+{{--                    </li>--}}
+{{--                @endforeach--}}
+
+
               <li class="nav-item  ">
                 <a class="nav-link" href="{{route('loai',['id'=>1])}}">Thời Sự</a>
-              </li>
-              <li class="nav-item  ">
+              </li><li class="nav-item  ">
                 <a class="nav-link" href="{{route('loai',['id'=>2])}}">Góc Nhìn</a>
               </li>
               <li class="nav-item  ">
@@ -34,7 +41,7 @@
               <li class="nav-item  ">
                 <a class="nav-link" href="#">Thời Sự</a>
               </li>
-              
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   News
@@ -46,7 +53,7 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
-              
+
             </ul>
             <form class="d-flex" role="search" method="GET" action="{{route('timkiem')}}">
               @csrf

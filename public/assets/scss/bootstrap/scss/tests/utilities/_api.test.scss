@@ -1,8 +1,8 @@
-@import "../../functions";
-@import "../../variables";
-@import "../../variables-dark";
-@import "../../maps";
-@import "../../mixins";
+@import "functions";
+@import "variables";
+@import "variables-dark";
+@import "maps";
+@import "mixins";
 
 $utilities: ();
 
@@ -33,7 +33,7 @@ $utilities: ();
 
     @include assert() {
       @include output() {
-        @import "../../utilities/api";
+        @import "api";
       }
 
       @include expect() {

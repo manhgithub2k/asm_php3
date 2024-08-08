@@ -1,4 +1,4 @@
-@import "mixins/banner";
+@import "banner";
 @include bsBanner(Grid);
 
 $include-column-box-sizing: true !default;
@@ -8,12 +8,12 @@ $include-column-box-sizing: true !default;
 @import "variables-dark";
 @import "maps";
 
-@import "mixins/breakpoints";
-@import "mixins/container";
-@import "mixins/grid";
-@import "mixins/utilities";
+@import "breakpoints";
+@import "container";
+@import "grid";
+@import "utilities";
 
-@import "vendor/rfs";
+@import "rfs";
 
 @import "containers";
 @import "grid";
@@ -59,4 +59,4 @@ $utilities: map-get-multiple(
   )
 );
 
-@import "utilities/api";
+@import "api";
